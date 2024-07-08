@@ -1,0 +1,17 @@
+@font-face {
+    font-family: matter;
+    src: url(/public/font/Matter-Light.ttf);
+}
+@font-face {
+    font-family: matter-bold;
+    src: url(/public/font/Matter-Bold.ttf);
+}
+.matter-font{
+    font-family: matter !important;
+
+}
+.matter-bold-font{
+
+    font-family: matter-bold !important;
+
+}
