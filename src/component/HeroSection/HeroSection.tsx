@@ -4,18 +4,18 @@ import Header from "../Header/Header";
 import circleGp from "../../assets/circle-gp.svg";
 const HeroSection = () => {
     type ResponseState = {
-        succes : boolean;
+        success : boolean;
         error?: boolean; // Optional error property (assuming it's not always present)
     };
     const [state, setState] = useState<ResponseState>({
-        succes :false,
+        success :false,
         error: false,
     });
     const handleJoin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setState((prevState: ResponseState) => {
-            if (prevState.succes ) {
-                return { ...prevState, succes : false, error: true }; // Reset succes  and set error
+            if (prevState.success ) {
+                return { ...prevState, success : false, error: true }; // Reset success  and set error
             } else {
                 return { ...prevState, error: true }; // Set error only if not already successful
             }
@@ -24,7 +24,7 @@ const HeroSection = () => {
     };
     const handleRejoin = () => {
         setState((prevState: ResponseState) => {
-            return { succes : false, error: false }; // Reset succes  and set error
+            return { success : false, error: false }; // Reset success  and set error
 
         });
     }
@@ -55,7 +55,7 @@ const HeroSection = () => {
                             maxW={{lg: "400px", base:'300px'}}
                             // textAlign={"center"}
                             mx={"auto"}
-                            opacity={state.succes   ? 1 : 0}
+                            opacity={state.success   ? 1 : 0}
                             variant={"h1"}
                         >
                             Thanks For Your
@@ -86,7 +86,7 @@ const HeroSection = () => {
                         <Heading
                             mt={"10px"}
                             className="matter-bold-font"
-                            opacity={state.succes  || state.error ? 0 : 1}
+                            opacity={state.success  || state.error ? 0 : 1}
                             transition={".9s"}
                             maxW={{ lg: "600px", md:"500px",base:"400px"}}
                             // textAlign={"center"}
@@ -123,7 +123,7 @@ const HeroSection = () => {
                         as="form"
                         // flexDirection={{lg:"row", base:"column"}}
                         onSubmit={handleJoin}
-                        opacity={state.succes  || state.error ? 0 : 1}
+                        opacity={state.success  || state.error ? 0 : 1}
                         transform={".9s"}
                     >
                         <Input
@@ -145,7 +145,7 @@ const HeroSection = () => {
                         </Button>
                     </Box>
                     <Image
-                        transform={state.succes  || state.error ? "translateY(-130px)" : "translateY(0px)"}
+                        transform={state.success  || state.error ? "translateY(-130px)" : "translateY(0px)"}
                         transition={".5s"}
 
                         mt={{lg:"42px", base:"70px"}} src={circleGp} />
