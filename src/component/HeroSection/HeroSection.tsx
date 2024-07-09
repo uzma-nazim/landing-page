@@ -17,7 +17,7 @@ const HeroSection = () => {
             if (prevState.success ) {
                 return { ...prevState, success : false, error: true }; // Reset success  and set error
             } else {
-                return { ...prevState, error: true }; // Set error only if not already successful
+                return { ...prevState, success: true }; // Set error only if not already successful
             }
         });
 
@@ -47,11 +47,11 @@ const HeroSection = () => {
                             position={"absolute"}
                             transition={".9s"}
                             className="matter-bold-font"
-                            maxW={{lg: "400px", base:'300px'}}
                             // textAlign={"center"}
                             mx={"auto"}
                             opacity={state.success   ? 1 : 0}
                             variant={"h1"}
+                            maxWidth={{ base:'300px',lg: "400px"}}
                         >
                             Thanks For Your
                             <Box as="span" color={"blue.200"}>
@@ -64,7 +64,7 @@ const HeroSection = () => {
                             position={"absolute"}
                             transition={".9s"}
                             className="matter-bold-font"
-                            maxW={{lg: "430px", base:'350px'}}
+                            maxW={{lg: "430px", base:'300px'}}
 
                             // textAlign={"center"}
                             mx={"auto"}
