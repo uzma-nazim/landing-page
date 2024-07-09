@@ -1,13 +1,13 @@
 import { Box, Image } from "@chakra-ui/react";
 import React from "react";
 interface LayoutProps {
-  children:  React.ReactNode
+  children: React.ReactNode
 }
 
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <Box height={{ lg: "100vh", base:"100%"}}  overflow={{lg:  "hidden", base:"auto"}} bg={"blue.100"} >
+    <Box height={{ lg: "100vh", base: "100%" }} overflow={{ lg: "hidden", base: "auto" }} bg={"blue.100"} >
       <Box
         position={"absolute"}
         top={"100px"}

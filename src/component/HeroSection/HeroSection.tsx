@@ -22,15 +22,10 @@ const HeroSection = () => {
         });
 
     };
-    const handleRejoin = () => {
-        setState((prevState: ResponseState) => {
-            return { success : false, error: false }; // Reset success  and set error
 
-        });
-    }
     return (
         <Box height={"100vh"} width={"100%"}>
-            <Header setState={handleRejoin} />
+            <Header setState={setState} />
             <Box mt={{lg:"0px", base:'35px'}} px={"10px"} display={"flex"} justifyContent={"center"}>
                 <Box
                     textAlign={{sm:"center", base:"start"}}
