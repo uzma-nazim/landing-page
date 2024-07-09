@@ -29,14 +29,19 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   }
   const [indexProfile, setindex] = useState<string>(dummyProifle[randomeNumber()])
-  const [prevIndex, setprevIndex] = useState<string>(dummyProifle[randomeNumber()])
+  // const [prevIndex, setprevIndex] = useState<string>(dummyProifle[randomeNumber()])
 
   const handleMouseOver = () => {
     let randomNumber = randomeNumber();
-console.log(prevIndex);
+    if (dummyProifle[randomNumber] === indexProfile) {
+      randomNumber = randomeNumber()
 
+    } else {
+      setindex(() => { return dummyProifle[randomNumber] })
+
+    }
     // setindex((prv: string) => { setprevIndex(prv); return dummyProifle[randomNumber] })
-    setindex((prv: string) => { setprevIndex(prv); return dummyProifle[randomNumber] })
+    // setindex((prv: string) => { setprevIndex(prv); return dummyProifle[randomNumber] })
   }
 
   return (
