@@ -7,7 +7,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <Box height={"100vh"}  overflow={"hidden"} bg={"blue.100"} width={"100%"}>
+    <Box height={{ lg: "100vh", base:"100%"}}  overflow={{lg:  "hidden", base:"auto"}} bg={"blue.100"} >
       <Box
         position={"absolute"}
         top={"100px"}
@@ -15,9 +15,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         // height={"100vh"}
         display={"grid"}
         zIndex={1}
+        height={"calc(100% - 100px)"}
 
         overflow={"hidden"}
-        gridTemplateColumns={{ xl: "repeat(14 ,1fr)", md: "repeat(10 ,1fr)", sm: "repeat(7 ,1fr)", base: "repeat(4 ,1fr)" }}
+        gridTemplateColumns={{ xl: "repeat(13 ,1fr)", md: "repeat(10 ,1fr)", sm: "repeat(7 ,1fr)", base: "repeat(4 ,1fr)" }}
         gridTemplateRows={{ xl: "repeat(9 ,1fr)", base: "repeat(7 ,1fr)" }}
       >
         {Array.from({ length: 84 }, (_, index) => {

@@ -1,10 +1,22 @@
 @font-face {
     font-family: matter;
-    src: url(/public/font/Matter-Light.ttf);
+    src: url(/font/Matter-Light.ttf);
 }
 @font-face {
     font-family: matter-bold;
-    src: url(/public/font/Matter-Bold.ttf);
+    src: url(/font/Matter-Bold.ttf);
+}
+@font-face {
+    font-family: matter-medium;
+    src: url(/font/Matter-Medium.ttf);
+}
+@font-face {
+    font-family: matter-reg;
+    src: url(/font/Matter-Regular.ttf);
+}
+body *{
+    /* border: 1px solid red !important; */
+    /* overflow: hidden; */
 }
 .matter-font{
     font-family: matter !important;
