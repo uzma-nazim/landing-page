@@ -64,8 +64,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               onMouseEnter={handleMouseOver}
               // onMouseLeave={handleMouseOver}
               opacity={0}
-              cursor={"pointer"}
-              transition={".5s"}
+              // cursor={"pointer"}
+              transition={".9s"}
+              filter={"blur(1px)"}
               _hover={{
                 opacity: 0.5
               }}

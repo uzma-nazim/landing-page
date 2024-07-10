@@ -18,7 +18,7 @@ const components = {
   Heading: {
     variants: {
       h1: {
-        fontSize: ["25px", "28px", "38px", "48px", "48px", "48px"],
+        fontSize: ["32px", "32px", "42px", "48px", "48px", "48px"],
         // lineHeight:['37px','37px','37px','48px','48px','48px'],
         color: "white.100",
       },
@@ -50,8 +50,8 @@ const components = {
   Text: {
     variants: {
       p1: {
-        fontSize: ["14px", "15px", "15px", "18px", "18px", "18px"],
-        fontFamily: "matter",
+        fontSize: ["16px", "16px", "16px", "18px", "18px", "18px"],
+        fontFamily: "matter-reg",
         color: "white.100",
       },
     },
@@ -81,9 +81,9 @@ const components = {
 
         border: "2px solid",
         borderColor: "blue.200",
+        boxShadow: "0px 4px 20px 0px #FFFFFF33",
         backgroundColor: "blue.300",
         height: "46px",
-        boxShadow: "0px 4px 20px 0px #FFFFFF33",
         width: "150px",
         borderRadius: "100px",
         color: "white.100",
