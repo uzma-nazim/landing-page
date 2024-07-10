@@ -160,7 +160,7 @@ const HeroSection = () => {
                         transition={".5s"}
                         // width={"100%"}
 
-                        mt={{ lg: "42px", base: "8rem" }} src={circleGp} />
+                        mt={{ lg: "42px", base: "110px" }} src={circleGp} />
                 </Box>
             </Box>
         </Box>
