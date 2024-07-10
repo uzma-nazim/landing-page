@@ -71,7 +71,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 opacity: 0.5
               }}
               key={index}
-              src={indexProfile}
+              src={`/images/${index}.png`}
               width={"100%"}
               height={"100px"}
               objectFit={"cover"}
