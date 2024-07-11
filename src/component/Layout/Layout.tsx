@@ -27,7 +27,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           return (
             <Image
             
-              opacity={1}
+              opacity={0}
               // cursor={"pointer"}
               transition={".9s"}
               filter={"blur(1px)"}
