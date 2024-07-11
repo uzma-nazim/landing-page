@@ -102,7 +102,7 @@ const HeroSection = () => {
               opacity={state.success ? 1 : 0}
               variant={"h1"}
               maxWidth={{ base: "300px", lg: "400px" }}
-              //   fontSize={{lg:"48px", base:"39px"}}
+            //   fontSize={{lg:"48px", base:"39px"}}
             >
               Thanks For Your
               <Box as="span" color={"blue.200"}>
@@ -136,7 +136,7 @@ const HeroSection = () => {
               maxW={{ lg: "600px", md: "500px", base: "400px" }}
               // textAlign={"center"}
               variant={"h1"}
-              //   mb={"30px"}
+            //   mb={"30px"}
             >
               Next Generation
               <Box as="span" color={"blue.200"}>
@@ -152,7 +152,7 @@ const HeroSection = () => {
             variant={"p1"}
             margin={{ lg: "20px 0px 50px 0px", base: "14px 0px 30px 0px" }}
             maxW={{ lg: "500px", base: "400px" }}
-            // textAlign={"center"}
+          // textAlign={"center"}
           >
             Revoluu, an open-source platform, serves as an all-in-one
             replacement of Linear, Jira, Slack, and Notion.
@@ -167,7 +167,7 @@ const HeroSection = () => {
             mx={"20px"}
             display={{ lg: "flex", base: "block" }}
             as="form"
-            sx={state.isFocus ? isFocusStyle : isValidate ? inValidStyle : {}}
+            sx={isValidate ? inValidStyle : state.isFocus ? isFocusStyle : {}}
             onSubmit={handleJoin}
             opacity={state.success || state.error ? 0 : 1}
             transform={".9s"}
