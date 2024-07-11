@@ -54,6 +54,11 @@ const components = {
         fontFamily: "matter-reg",
         color: "white.100",
       },
+      error: {
+        fontSize:"13px",
+        fontFamily: "matter-reg",
+        color: "red",
+      },
     },
   },
   Button: {

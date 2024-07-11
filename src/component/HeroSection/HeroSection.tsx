@@ -13,14 +13,33 @@ const HeroSection = () => {
     error: false,
     isFocus: false,
   });
+  const [email, setemail] = useState<string>("");
+  const [isValidate, setisValidate] = useState<string>("");
+  function validateEmail(email: string) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
   const handleJoin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const isEmail = email.trim();
+    console.log("isEmail", isEmail);
+
+    if (!isEmail) {
+      setisValidate("*Fill this field");
+      return;
+    }
+    if (!validateEmail(email)) {
+      setisValidate("*Please Enter The Correct Email Address");
+      return;
+    }
     setState((prevState: ResponseState) => {
+      setisValidate("");
       if (prevState.success) {
         return { ...prevState, success: false, error: true };
       } else {
         return { ...prevState, success: true };
       }
+
     });
   };
 
@@ -28,6 +47,10 @@ const HeroSection = () => {
     border: "2px solid",
     borderColor: "blue.200",
     boxShadow: "0px 4px 20px 0px #FFFFFF33",
+  };
+  const inValidStyle = {
+    border: "2px solid",
+    borderColor: "red",
   };
   return (
     <Box height={"100vh"} width={"100%"}>
@@ -63,7 +86,11 @@ const HeroSection = () => {
             justifyContent={{ sm: "center", base: "flex-start" }}
             position={"relative"}
             // border={"2px solid red"}
-            height={ state.success||state.error? {lg:"120px", base:"93px"}:"max-content"}
+            height={
+              state.success || state.error
+                ? { lg: "120px", base: "93px" }
+                : "max-content"
+            }
           >
             <Heading
               mt={"10px"}
@@ -75,7 +102,7 @@ const HeroSection = () => {
               opacity={state.success ? 1 : 0}
               variant={"h1"}
               maxWidth={{ base: "300px", lg: "400px" }}
-            //   fontSize={{lg:"48px", base:"39px"}}
+              //   fontSize={{lg:"48px", base:"39px"}}
             >
               Thanks For Your
               <Box as="span" color={"blue.200"}>
@@ -109,7 +136,7 @@ const HeroSection = () => {
               maxW={{ lg: "600px", md: "500px", base: "400px" }}
               // textAlign={"center"}
               variant={"h1"}
-            //   mb={"30px"}
+              //   mb={"30px"}
             >
               Next Generation
               <Box as="span" color={"blue.200"}>
@@ -140,7 +167,7 @@ const HeroSection = () => {
             mx={"20px"}
             display={{ lg: "flex", base: "block" }}
             as="form"
-            sx={state.isFocus ? isFocusStyle : {}}
+            sx={state.isFocus ? isFocusStyle : isValidate ? inValidStyle : {}}
             onSubmit={handleJoin}
             opacity={state.success || state.error ? 0 : 1}
             transform={".9s"}
@@ -149,6 +176,8 @@ const HeroSection = () => {
               variant={"white-input"}
               placeholder="Enter Email Address"
               type="text"
+              value={email}
+              onChange={(e) => setemail(e.target.value)}
             />
             <Button
               type="submit"
@@ -162,6 +191,17 @@ const HeroSection = () => {
               Join Waitlist
             </Button>
           </Box>
+          <Text
+            width={{ lg: "450px", sm: "400px", base: " calc( 100% - 54px)" }}
+
+            textAlign={"start"}
+            // border={"1px solid red"}
+            // width={"100%"} 
+            px={"25px"}
+            variant={"error"}
+          >
+            {isValidate}
+          </Text>
           <Image
             transform={
               state.success || state.error
