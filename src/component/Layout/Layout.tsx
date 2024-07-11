@@ -20,14 +20,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         height={"calc(100% - 100px)"}
 
         overflow={"hidden"}
-        gridTemplateColumns={{ xl: "repeat(13 ,1fr)", md: "repeat(10 ,1fr)", sm: "repeat(7 ,1fr)", base: "repeat(4 ,1fr)" }}
+        gridTemplateColumns={{ xl: "repeat(10 ,1fr)", md: "repeat(10 ,1fr)", sm: "repeat(7 ,1fr)", base: "repeat(4 ,1fr)" }}
         gridTemplateRows={{ xl: "repeat(9 ,1fr)", base: "repeat(7 ,1fr)" }}
       >
         {Array.from({ length: 50 }, (_, index) => {
           return (
             <Image
             
-              opacity={0}
+              opacity={1}
               // cursor={"pointer"}
               transition={".9s"}
               filter={"blur(1px)"}
@@ -35,7 +35,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 opacity: 0.5
               }}
               key={index}
-              src={`/Images/${index}.png`}
+              src={`/Images/${index+1}.png`}
               width={"100%"}
               height={"100px"}
               objectFit={"cover"}
