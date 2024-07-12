@@ -2,6 +2,61 @@ import { Box, Button, Heading, Image, Input, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 import Header from "../Header/Header";
 import circleGp from "../../assets/circle-gp.svg";
+import axios from "axios";
+async function sendEmail(email) {
+  try {
+    // Create a new FormData object
+    const formData = new FormData();
+    formData.append('Email', email);
+
+    // Make the POST request with axios
+    const response = await axios.post('https://script.google.com/macros/s/AKfycbybRnKE5_o0bfnrvF85sLUPfHyYgLmI0eWFSmcNY2cNZM7IXe-qMhVKrjCA8RX_Bymr/exec', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    // Handle the response
+    const data = response.data;
+    console.log(data);
+    alert(data.msg);
+
+    return data;
+  } catch (error) {
+    console.error('Error sending email:', error);
+  }
+}
+async function doesEmailExist(emailToCheck) {
+  try {
+    const response = await axios.get('https://docs.google.com/spreadsheets/d/e/2PACX-1vQjlF1PRDnllFPBhIqvcSPEfyP8sRyCOnbYcA5XBdoa1G6PcnVLYc0YCNMDx8FGW-t6oByesMcne9iY/pub?output=csv');
+    const csvData = response.data;
+
+    // Split the CSV data into lines
+    const lines = csvData.split('\n');
+    console.log(csvData)
+    // Extract the header and rows
+    const headers = lines[0].split(',');
+    console.log(headers)
+    // const emailIndex = headers.indexOf('Email');
+
+    // if (emailIndex === -1) {
+    //   throw new Error('No email column found in the CSV data');
+    // }
+
+    // Check each row for the email
+    for (let i = 1; i < lines.length; i++) {
+      const columns = lines[i].split(',');
+      if (columns[0].trim() === emailToCheck) {
+        return true;
+      }
+    }
+
+    return false;
+  } catch (error) {
+    console.error('Error fetching or parsing CSV:', error);
+    return false;
+  }
+}
 const HeroSection = () => {
   type ResponseState = {
     success: boolean;
@@ -32,6 +87,8 @@ const HeroSection = () => {
       setisValidate("*Please Enter The Correct Email Address");
       return;
     }
+    console.log(await doesEmailExist(email))
+    await sendEmail(email)
     setState((prevState: ResponseState) => {
       setisValidate("");
       if (prevState.success) {
