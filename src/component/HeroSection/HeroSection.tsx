@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Header from "../Header/Header";
 import circleGp from "../../assets/circle-gp.svg";
 import axios from "axios";
-async function sendEmail(email) {
+async function sendEmail(email: string) {
   try {
     // Create a new FormData object
     const formData = new FormData();
@@ -26,7 +26,7 @@ async function sendEmail(email) {
     console.error('Error sending email:', error);
   }
 }
-async function doesEmailExist(emailToCheck) {
+async function doesEmailExist(emailToCheck: string) {
   try {
     const response = await axios.get('https://docs.google.com/spreadsheets/d/e/2PACX-1vQjlF1PRDnllFPBhIqvcSPEfyP8sRyCOnbYcA5XBdoa1G6PcnVLYc0YCNMDx8FGW-t6oByesMcne9iY/pub?output=csv');
     const csvData = response.data;
@@ -87,17 +87,32 @@ const HeroSection = () => {
       setisValidate("*Please Enter The Correct Email Address");
       return;
     }
-    console.log(await doesEmailExist(email))
-    await sendEmail(email)
-    setState((prevState: ResponseState) => {
-      setisValidate("");
-      if (prevState.success) {
+    if (await doesEmailExist(email)) {
+      setState((prevState: ResponseState) => {
+        setisValidate("");
         return { ...prevState, success: false, error: true };
-      } else {
+      });
+      setemail("")
+    } else {
+      await sendEmail(email)
+      setState((prevState: ResponseState) => {
+        setisValidate("");
         return { ...prevState, success: true };
-      }
+      });
+      setemail("")
 
-    });
+    }
+    // console.log(await doesEmailExist(email))
+    // await sendEmail(email)
+    // setState((prevState: ResponseState) => {
+    //   setisValidate("");
+    //   if (prevState.success) {
+    //     return { ...prevState, success: false, error: true };
+    //   } else {
+    //     return { ...prevState, success: true };
+    //   }
+
+    // });
   };
 
   const isFocusStyle = {
