@@ -19,7 +19,7 @@ async function sendEmail(email) {
     // Handle the response
     const data = response.data;
     console.log(data);
-    alert(data.msg);
+    // alert(data.msg);
 
     return data;
   } catch (error) {
